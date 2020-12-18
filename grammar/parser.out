@@ -1,0 +1,1931 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ANNOTATION
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement_list statement
+Rule 3     statement_list -> <empty>
+Rule 4     statement -> expression_stmt
+Rule 5     statement -> compound_stmt
+Rule 6     statement -> selection_stmt
+Rule 7     statement -> iteration_stmt
+Rule 8     statement -> var_declaration
+Rule 9     statement -> write_stmt
+Rule 10    statement -> read_stmt
+Rule 11    write_stmt -> WRITE ( expression )
+Rule 12    read_stmt -> READ ( ID )
+Rule 13    compound_stmt -> { local_declarations statement_list }
+Rule 14    local_declarations -> local_declarations var_declaration
+Rule 15    local_declarations -> <empty>
+Rule 16    var_declaration -> type_specifier ID ;
+Rule 17    var_declaration -> type_specifier ID [ NUM ] ;
+Rule 18    var_declaration -> type_specifier ID = expression ;
+Rule 19    type_specifier -> INT
+Rule 20    type_specifier -> REAL
+Rule 21    expression_stmt -> expression ;
+Rule 22    expression_stmt -> ;
+Rule 23    selection_stmt -> IF ( expression ) statement
+Rule 24    selection_stmt -> IF ( expression ) statement ELSE statement
+Rule 25    iteration_stmt -> WHILE ( expression ) statement
+Rule 26    expression -> var = expression
+Rule 27    expression -> simple_expression
+Rule 28    expression -> [ array ]
+Rule 29    array -> array_list
+Rule 30    array -> <empty>
+Rule 31    array_list -> array_list , array_list
+Rule 32    array_list -> factor
+Rule 33    var -> ID
+Rule 34    var -> ID [ expression ]
+Rule 35    simple_expression -> additive_expression relop additive_expression
+Rule 36    simple_expression -> additive_expression
+Rule 37    relop -> LE
+Rule 38    relop -> <
+Rule 39    relop -> >
+Rule 40    relop -> GE
+Rule 41    relop -> EE
+Rule 42    relop -> NE
+Rule 43    additive_expression -> additive_expression addop term
+Rule 44    additive_expression -> term
+Rule 45    addop -> +
+Rule 46    addop -> -
+Rule 47    term -> term mulop factor
+Rule 48    term -> factor
+Rule 49    mulop -> *
+Rule 50    mulop -> /
+Rule 51    factor -> ( expression )
+Rule 52    factor -> var
+Rule 53    factor -> NUM
+Rule 54    factor -> NUMF
+
+Terminals, with rules where they appear
+
+(                    : 11 12 23 24 25 51
+)                    : 11 12 23 24 25 51
+*                    : 49
++                    : 45
+,                    : 31
+-                    : 46
+/                    : 50
+;                    : 16 17 18 21 22
+<                    : 38
+=                    : 18 26
+>                    : 39
+ANNOTATION           : 
+EE                   : 41
+ELSE                 : 24
+GE                   : 40
+ID                   : 12 16 17 18 33 34
+IF                   : 23 24
+INT                  : 19
+LE                   : 37
+NE                   : 42
+NUM                  : 17 53
+NUMF                 : 54
+READ                 : 12
+REAL                 : 20
+WHILE                : 25
+WRITE                : 11
+[                    : 17 28 34
+]                    : 17 28 34
+error                : 
+{                    : 13
+}                    : 13
+
+Nonterminals, with rules where they appear
+
+additive_expression  : 35 35 36 43
+addop                : 43
+array                : 28
+array_list           : 29 31 31
+compound_stmt        : 5
+expression           : 11 18 21 23 24 25 26 34 51
+expression_stmt      : 4
+factor               : 32 47 48
+iteration_stmt       : 7
+local_declarations   : 13 14
+mulop                : 47
+program              : 0
+read_stmt            : 10
+relop                : 35
+selection_stmt       : 6
+simple_expression    : 27
+statement            : 2 23 24 24 25
+statement_list       : 1 2 13
+term                 : 43 44 47
+type_specifier       : 16 17 18
+var                  : 26 52
+var_declaration      : 8 14
+write_stmt           : 9
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> .
+
+    ;               reduce using rule 3 (statement_list -> .)
+    {               reduce using rule 3 (statement_list -> .)
+    IF              reduce using rule 3 (statement_list -> .)
+    WHILE           reduce using rule 3 (statement_list -> .)
+    WRITE           reduce using rule 3 (statement_list -> .)
+    READ            reduce using rule 3 (statement_list -> .)
+    [               reduce using rule 3 (statement_list -> .)
+    INT             reduce using rule 3 (statement_list -> .)
+    REAL            reduce using rule 3 (statement_list -> .)
+    ID              reduce using rule 3 (statement_list -> .)
+    (               reduce using rule 3 (statement_list -> .)
+    NUM             reduce using rule 3 (statement_list -> .)
+    NUMF            reduce using rule 3 (statement_list -> .)
+    $end            reduce using rule 3 (statement_list -> .)
+
+    statement_list                 shift and go to state 1
+    program                        shift and go to state 2
+
+state 1
+
+    (1) program -> statement_list .
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . expression_stmt
+    (5) statement -> . compound_stmt
+    (6) statement -> . selection_stmt
+    (7) statement -> . iteration_stmt
+    (8) statement -> . var_declaration
+    (9) statement -> . write_stmt
+    (10) statement -> . read_stmt
+    (21) expression_stmt -> . expression ;
+    (22) expression_stmt -> . ;
+    (13) compound_stmt -> . { local_declarations statement_list }
+    (23) selection_stmt -> . IF ( expression ) statement
+    (24) selection_stmt -> . IF ( expression ) statement ELSE statement
+    (25) iteration_stmt -> . WHILE ( expression ) statement
+    (16) var_declaration -> . type_specifier ID ;
+    (17) var_declaration -> . type_specifier ID [ NUM ] ;
+    (18) var_declaration -> . type_specifier ID = expression ;
+    (11) write_stmt -> . WRITE ( expression )
+    (12) read_stmt -> . READ ( ID )
+    (26) expression -> . var = expression
+    (27) expression -> . simple_expression
+    (28) expression -> . [ array ]
+    (19) type_specifier -> . INT
+    (20) type_specifier -> . REAL
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+    (35) simple_expression -> . additive_expression relop additive_expression
+    (36) simple_expression -> . additive_expression
+    (43) additive_expression -> . additive_expression addop term
+    (44) additive_expression -> . term
+    (47) term -> . term mulop factor
+    (48) term -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+
+    $end            reduce using rule 1 (program -> statement_list .)
+    ;               shift and go to state 21
+    {               shift and go to state 27
+    IF              shift and go to state 22
+    WHILE           shift and go to state 26
+    WRITE           shift and go to state 14
+    READ            shift and go to state 8
+    [               shift and go to state 28
+    INT             shift and go to state 6
+    REAL            shift and go to state 4
+    ID              shift and go to state 13
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+
+    additive_expression            shift and go to state 25
+    write_stmt                     shift and go to state 20
+    var_declaration                shift and go to state 23
+    expression                     shift and go to state 5
+    term                           shift and go to state 9
+    iteration_stmt                 shift and go to state 7
+    var                            shift and go to state 11
+    simple_expression              shift and go to state 3
+    factor                         shift and go to state 10
+    statement                      shift and go to state 12
+    compound_stmt                  shift and go to state 24
+    selection_stmt                 shift and go to state 15
+    type_specifier                 shift and go to state 16
+    read_stmt                      shift and go to state 30
+    expression_stmt                shift and go to state 18
+
+state 2
+
+    (0) S' -> program .
+
+
+
+state 3
+
+    (27) expression -> simple_expression .
+
+    )               reduce using rule 27 (expression -> simple_expression .)
+    ]               reduce using rule 27 (expression -> simple_expression .)
+    ;               reduce using rule 27 (expression -> simple_expression .)
+
+
+state 4
+
+    (20) type_specifier -> REAL .
+
+    ID              reduce using rule 20 (type_specifier -> REAL .)
+
+
+state 5
+
+    (21) expression_stmt -> expression . ;
+
+    ;               shift and go to state 31
+
+
+state 6
+
+    (19) type_specifier -> INT .
+
+    ID              reduce using rule 19 (type_specifier -> INT .)
+
+
+state 7
+
+    (7) statement -> iteration_stmt .
+
+    ELSE            reduce using rule 7 (statement -> iteration_stmt .)
+    ;               reduce using rule 7 (statement -> iteration_stmt .)
+    {               reduce using rule 7 (statement -> iteration_stmt .)
+    IF              reduce using rule 7 (statement -> iteration_stmt .)
+    WHILE           reduce using rule 7 (statement -> iteration_stmt .)
+    WRITE           reduce using rule 7 (statement -> iteration_stmt .)
+    READ            reduce using rule 7 (statement -> iteration_stmt .)
+    [               reduce using rule 7 (statement -> iteration_stmt .)
+    INT             reduce using rule 7 (statement -> iteration_stmt .)
+    REAL            reduce using rule 7 (statement -> iteration_stmt .)
+    ID              reduce using rule 7 (statement -> iteration_stmt .)
+    (               reduce using rule 7 (statement -> iteration_stmt .)
+    NUM             reduce using rule 7 (statement -> iteration_stmt .)
+    NUMF            reduce using rule 7 (statement -> iteration_stmt .)
+    $end            reduce using rule 7 (statement -> iteration_stmt .)
+    }               reduce using rule 7 (statement -> iteration_stmt .)
+
+
+state 8
+
+    (12) read_stmt -> READ . ( ID )
+
+    (               shift and go to state 32
+
+
+state 9
+
+    (44) additive_expression -> term .
+    (47) term -> term . mulop factor
+    (49) mulop -> . *
+    (50) mulop -> . /
+
+    LE              reduce using rule 44 (additive_expression -> term .)
+    <               reduce using rule 44 (additive_expression -> term .)
+    >               reduce using rule 44 (additive_expression -> term .)
+    GE              reduce using rule 44 (additive_expression -> term .)
+    EE              reduce using rule 44 (additive_expression -> term .)
+    NE              reduce using rule 44 (additive_expression -> term .)
+    +               reduce using rule 44 (additive_expression -> term .)
+    -               reduce using rule 44 (additive_expression -> term .)
+    ;               reduce using rule 44 (additive_expression -> term .)
+    )               reduce using rule 44 (additive_expression -> term .)
+    ]               reduce using rule 44 (additive_expression -> term .)
+    *               shift and go to state 35
+    /               shift and go to state 34
+
+    mulop                          shift and go to state 33
+
+state 10
+
+    (48) term -> factor .
+
+    *               reduce using rule 48 (term -> factor .)
+    /               reduce using rule 48 (term -> factor .)
+    LE              reduce using rule 48 (term -> factor .)
+    <               reduce using rule 48 (term -> factor .)
+    >               reduce using rule 48 (term -> factor .)
+    GE              reduce using rule 48 (term -> factor .)
+    EE              reduce using rule 48 (term -> factor .)
+    NE              reduce using rule 48 (term -> factor .)
+    +               reduce using rule 48 (term -> factor .)
+    -               reduce using rule 48 (term -> factor .)
+    )               reduce using rule 48 (term -> factor .)
+    ;               reduce using rule 48 (term -> factor .)
+    ]               reduce using rule 48 (term -> factor .)
+
+
+state 11
+
+    (26) expression -> var . = expression
+    (52) factor -> var .
+
+    =               shift and go to state 36
+    *               reduce using rule 52 (factor -> var .)
+    /               reduce using rule 52 (factor -> var .)
+    LE              reduce using rule 52 (factor -> var .)
+    <               reduce using rule 52 (factor -> var .)
+    >               reduce using rule 52 (factor -> var .)
+    GE              reduce using rule 52 (factor -> var .)
+    EE              reduce using rule 52 (factor -> var .)
+    NE              reduce using rule 52 (factor -> var .)
+    +               reduce using rule 52 (factor -> var .)
+    -               reduce using rule 52 (factor -> var .)
+    )               reduce using rule 52 (factor -> var .)
+    ;               reduce using rule 52 (factor -> var .)
+    ]               reduce using rule 52 (factor -> var .)
+
+
+state 12
+
+    (2) statement_list -> statement_list statement .
+
+    }               reduce using rule 2 (statement_list -> statement_list statement .)
+    ;               reduce using rule 2 (statement_list -> statement_list statement .)
+    {               reduce using rule 2 (statement_list -> statement_list statement .)
+    IF              reduce using rule 2 (statement_list -> statement_list statement .)
+    WHILE           reduce using rule 2 (statement_list -> statement_list statement .)
+    WRITE           reduce using rule 2 (statement_list -> statement_list statement .)
+    READ            reduce using rule 2 (statement_list -> statement_list statement .)
+    [               reduce using rule 2 (statement_list -> statement_list statement .)
+    INT             reduce using rule 2 (statement_list -> statement_list statement .)
+    REAL            reduce using rule 2 (statement_list -> statement_list statement .)
+    ID              reduce using rule 2 (statement_list -> statement_list statement .)
+    (               reduce using rule 2 (statement_list -> statement_list statement .)
+    NUM             reduce using rule 2 (statement_list -> statement_list statement .)
+    NUMF            reduce using rule 2 (statement_list -> statement_list statement .)
+    $end            reduce using rule 2 (statement_list -> statement_list statement .)
+
+
+state 13
+
+    (33) var -> ID .
+    (34) var -> ID . [ expression ]
+
+    =               reduce using rule 33 (var -> ID .)
+    *               reduce using rule 33 (var -> ID .)
+    /               reduce using rule 33 (var -> ID .)
+    LE              reduce using rule 33 (var -> ID .)
+    <               reduce using rule 33 (var -> ID .)
+    >               reduce using rule 33 (var -> ID .)
+    GE              reduce using rule 33 (var -> ID .)
+    EE              reduce using rule 33 (var -> ID .)
+    NE              reduce using rule 33 (var -> ID .)
+    +               reduce using rule 33 (var -> ID .)
+    -               reduce using rule 33 (var -> ID .)
+    ;               reduce using rule 33 (var -> ID .)
+    )               reduce using rule 33 (var -> ID .)
+    ]               reduce using rule 33 (var -> ID .)
+    ,               reduce using rule 33 (var -> ID .)
+    [               shift and go to state 37
+
+
+state 14
+
+    (11) write_stmt -> WRITE . ( expression )
+
+    (               shift and go to state 38
+
+
+state 15
+
+    (6) statement -> selection_stmt .
+
+    ELSE            reduce using rule 6 (statement -> selection_stmt .)
+    ;               reduce using rule 6 (statement -> selection_stmt .)
+    {               reduce using rule 6 (statement -> selection_stmt .)
+    IF              reduce using rule 6 (statement -> selection_stmt .)
+    WHILE           reduce using rule 6 (statement -> selection_stmt .)
+    WRITE           reduce using rule 6 (statement -> selection_stmt .)
+    READ            reduce using rule 6 (statement -> selection_stmt .)
+    [               reduce using rule 6 (statement -> selection_stmt .)
+    INT             reduce using rule 6 (statement -> selection_stmt .)
+    REAL            reduce using rule 6 (statement -> selection_stmt .)
+    ID              reduce using rule 6 (statement -> selection_stmt .)
+    (               reduce using rule 6 (statement -> selection_stmt .)
+    NUM             reduce using rule 6 (statement -> selection_stmt .)
+    NUMF            reduce using rule 6 (statement -> selection_stmt .)
+    $end            reduce using rule 6 (statement -> selection_stmt .)
+    }               reduce using rule 6 (statement -> selection_stmt .)
+
+
+state 16
+
+    (16) var_declaration -> type_specifier . ID ;
+    (17) var_declaration -> type_specifier . ID [ NUM ] ;
+    (18) var_declaration -> type_specifier . ID = expression ;
+
+    ID              shift and go to state 39
+
+
+state 17
+
+    (51) factor -> ( . expression )
+    (26) expression -> . var = expression
+    (27) expression -> . simple_expression
+    (28) expression -> . [ array ]
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+    (35) simple_expression -> . additive_expression relop additive_expression
+    (36) simple_expression -> . additive_expression
+    (43) additive_expression -> . additive_expression addop term
+    (44) additive_expression -> . term
+    (47) term -> . term mulop factor
+    (48) term -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+
+    [               shift and go to state 28
+    ID              shift and go to state 13
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+
+    simple_expression              shift and go to state 3
+    factor                         shift and go to state 10
+    expression                     shift and go to state 40
+    term                           shift and go to state 9
+    additive_expression            shift and go to state 25
+    var                            shift and go to state 11
+
+state 18
+
+    (4) statement -> expression_stmt .
+
+    ELSE            reduce using rule 4 (statement -> expression_stmt .)
+    ;               reduce using rule 4 (statement -> expression_stmt .)
+    {               reduce using rule 4 (statement -> expression_stmt .)
+    IF              reduce using rule 4 (statement -> expression_stmt .)
+    WHILE           reduce using rule 4 (statement -> expression_stmt .)
+    WRITE           reduce using rule 4 (statement -> expression_stmt .)
+    READ            reduce using rule 4 (statement -> expression_stmt .)
+    [               reduce using rule 4 (statement -> expression_stmt .)
+    INT             reduce using rule 4 (statement -> expression_stmt .)
+    REAL            reduce using rule 4 (statement -> expression_stmt .)
+    ID              reduce using rule 4 (statement -> expression_stmt .)
+    (               reduce using rule 4 (statement -> expression_stmt .)
+    NUM             reduce using rule 4 (statement -> expression_stmt .)
+    NUMF            reduce using rule 4 (statement -> expression_stmt .)
+    $end            reduce using rule 4 (statement -> expression_stmt .)
+    }               reduce using rule 4 (statement -> expression_stmt .)
+
+
+state 19
+
+    (53) factor -> NUM .
+
+    *               reduce using rule 53 (factor -> NUM .)
+    /               reduce using rule 53 (factor -> NUM .)
+    LE              reduce using rule 53 (factor -> NUM .)
+    <               reduce using rule 53 (factor -> NUM .)
+    >               reduce using rule 53 (factor -> NUM .)
+    GE              reduce using rule 53 (factor -> NUM .)
+    EE              reduce using rule 53 (factor -> NUM .)
+    NE              reduce using rule 53 (factor -> NUM .)
+    +               reduce using rule 53 (factor -> NUM .)
+    -               reduce using rule 53 (factor -> NUM .)
+    )               reduce using rule 53 (factor -> NUM .)
+    ;               reduce using rule 53 (factor -> NUM .)
+    ]               reduce using rule 53 (factor -> NUM .)
+    ,               reduce using rule 53 (factor -> NUM .)
+
+
+state 20
+
+    (9) statement -> write_stmt .
+
+    ELSE            reduce using rule 9 (statement -> write_stmt .)
+    ;               reduce using rule 9 (statement -> write_stmt .)
+    {               reduce using rule 9 (statement -> write_stmt .)
+    IF              reduce using rule 9 (statement -> write_stmt .)
+    WHILE           reduce using rule 9 (statement -> write_stmt .)
+    WRITE           reduce using rule 9 (statement -> write_stmt .)
+    READ            reduce using rule 9 (statement -> write_stmt .)
+    [               reduce using rule 9 (statement -> write_stmt .)
+    INT             reduce using rule 9 (statement -> write_stmt .)
+    REAL            reduce using rule 9 (statement -> write_stmt .)
+    ID              reduce using rule 9 (statement -> write_stmt .)
+    (               reduce using rule 9 (statement -> write_stmt .)
+    NUM             reduce using rule 9 (statement -> write_stmt .)
+    NUMF            reduce using rule 9 (statement -> write_stmt .)
+    $end            reduce using rule 9 (statement -> write_stmt .)
+    }               reduce using rule 9 (statement -> write_stmt .)
+
+
+state 21
+
+    (22) expression_stmt -> ; .
+
+    }               reduce using rule 22 (expression_stmt -> ; .)
+    ;               reduce using rule 22 (expression_stmt -> ; .)
+    {               reduce using rule 22 (expression_stmt -> ; .)
+    IF              reduce using rule 22 (expression_stmt -> ; .)
+    WHILE           reduce using rule 22 (expression_stmt -> ; .)
+    WRITE           reduce using rule 22 (expression_stmt -> ; .)
+    READ            reduce using rule 22 (expression_stmt -> ; .)
+    [               reduce using rule 22 (expression_stmt -> ; .)
+    INT             reduce using rule 22 (expression_stmt -> ; .)
+    REAL            reduce using rule 22 (expression_stmt -> ; .)
+    ID              reduce using rule 22 (expression_stmt -> ; .)
+    (               reduce using rule 22 (expression_stmt -> ; .)
+    NUM             reduce using rule 22 (expression_stmt -> ; .)
+    NUMF            reduce using rule 22 (expression_stmt -> ; .)
+    ELSE            reduce using rule 22 (expression_stmt -> ; .)
+    $end            reduce using rule 22 (expression_stmt -> ; .)
+
+
+state 22
+
+    (23) selection_stmt -> IF . ( expression ) statement
+    (24) selection_stmt -> IF . ( expression ) statement ELSE statement
+
+    (               shift and go to state 41
+
+
+state 23
+
+    (8) statement -> var_declaration .
+
+    ELSE            reduce using rule 8 (statement -> var_declaration .)
+    ;               reduce using rule 8 (statement -> var_declaration .)
+    {               reduce using rule 8 (statement -> var_declaration .)
+    IF              reduce using rule 8 (statement -> var_declaration .)
+    WHILE           reduce using rule 8 (statement -> var_declaration .)
+    WRITE           reduce using rule 8 (statement -> var_declaration .)
+    READ            reduce using rule 8 (statement -> var_declaration .)
+    [               reduce using rule 8 (statement -> var_declaration .)
+    INT             reduce using rule 8 (statement -> var_declaration .)
+    REAL            reduce using rule 8 (statement -> var_declaration .)
+    ID              reduce using rule 8 (statement -> var_declaration .)
+    (               reduce using rule 8 (statement -> var_declaration .)
+    NUM             reduce using rule 8 (statement -> var_declaration .)
+    NUMF            reduce using rule 8 (statement -> var_declaration .)
+    $end            reduce using rule 8 (statement -> var_declaration .)
+    }               reduce using rule 8 (statement -> var_declaration .)
+
+
+state 24
+
+    (5) statement -> compound_stmt .
+
+    ELSE            reduce using rule 5 (statement -> compound_stmt .)
+    ;               reduce using rule 5 (statement -> compound_stmt .)
+    {               reduce using rule 5 (statement -> compound_stmt .)
+    IF              reduce using rule 5 (statement -> compound_stmt .)
+    WHILE           reduce using rule 5 (statement -> compound_stmt .)
+    WRITE           reduce using rule 5 (statement -> compound_stmt .)
+    READ            reduce using rule 5 (statement -> compound_stmt .)
+    [               reduce using rule 5 (statement -> compound_stmt .)
+    INT             reduce using rule 5 (statement -> compound_stmt .)
+    REAL            reduce using rule 5 (statement -> compound_stmt .)
+    ID              reduce using rule 5 (statement -> compound_stmt .)
+    (               reduce using rule 5 (statement -> compound_stmt .)
+    NUM             reduce using rule 5 (statement -> compound_stmt .)
+    NUMF            reduce using rule 5 (statement -> compound_stmt .)
+    $end            reduce using rule 5 (statement -> compound_stmt .)
+    }               reduce using rule 5 (statement -> compound_stmt .)
+
+
+state 25
+
+    (35) simple_expression -> additive_expression . relop additive_expression
+    (36) simple_expression -> additive_expression .
+    (43) additive_expression -> additive_expression . addop term
+    (37) relop -> . LE
+    (38) relop -> . <
+    (39) relop -> . >
+    (40) relop -> . GE
+    (41) relop -> . EE
+    (42) relop -> . NE
+    (45) addop -> . +
+    (46) addop -> . -
+
+    )               reduce using rule 36 (simple_expression -> additive_expression .)
+    ;               reduce using rule 36 (simple_expression -> additive_expression .)
+    ]               reduce using rule 36 (simple_expression -> additive_expression .)
+    LE              shift and go to state 46
+    <               shift and go to state 45
+    >               shift and go to state 47
+    GE              shift and go to state 49
+    EE              shift and go to state 42
+    NE              shift and go to state 51
+    +               shift and go to state 50
+    -               shift and go to state 48
+
+    addop                          shift and go to state 43
+    relop                          shift and go to state 44
+
+state 26
+
+    (25) iteration_stmt -> WHILE . ( expression ) statement
+
+    (               shift and go to state 52
+
+
+state 27
+
+    (13) compound_stmt -> { . local_declarations statement_list }
+    (14) local_declarations -> . local_declarations var_declaration
+    (15) local_declarations -> .
+
+    INT             reduce using rule 15 (local_declarations -> .)
+    REAL            reduce using rule 15 (local_declarations -> .)
+    }               reduce using rule 15 (local_declarations -> .)
+    ;               reduce using rule 15 (local_declarations -> .)
+    {               reduce using rule 15 (local_declarations -> .)
+    IF              reduce using rule 15 (local_declarations -> .)
+    WHILE           reduce using rule 15 (local_declarations -> .)
+    WRITE           reduce using rule 15 (local_declarations -> .)
+    READ            reduce using rule 15 (local_declarations -> .)
+    [               reduce using rule 15 (local_declarations -> .)
+    ID              reduce using rule 15 (local_declarations -> .)
+    (               reduce using rule 15 (local_declarations -> .)
+    NUM             reduce using rule 15 (local_declarations -> .)
+    NUMF            reduce using rule 15 (local_declarations -> .)
+
+    local_declarations             shift and go to state 53
+
+state 28
+
+    (28) expression -> [ . array ]
+    (29) array -> . array_list
+    (30) array -> .
+    (31) array_list -> . array_list , array_list
+    (32) array_list -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+
+    ]               reduce using rule 30 (array -> .)
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+    ID              shift and go to state 13
+
+    array                          shift and go to state 55
+    factor                         shift and go to state 57
+    array_list                     shift and go to state 56
+    var                            shift and go to state 54
+
+state 29
+
+    (54) factor -> NUMF .
+
+    *               reduce using rule 54 (factor -> NUMF .)
+    /               reduce using rule 54 (factor -> NUMF .)
+    LE              reduce using rule 54 (factor -> NUMF .)
+    <               reduce using rule 54 (factor -> NUMF .)
+    >               reduce using rule 54 (factor -> NUMF .)
+    GE              reduce using rule 54 (factor -> NUMF .)
+    EE              reduce using rule 54 (factor -> NUMF .)
+    NE              reduce using rule 54 (factor -> NUMF .)
+    +               reduce using rule 54 (factor -> NUMF .)
+    -               reduce using rule 54 (factor -> NUMF .)
+    )               reduce using rule 54 (factor -> NUMF .)
+    ;               reduce using rule 54 (factor -> NUMF .)
+    ]               reduce using rule 54 (factor -> NUMF .)
+    ,               reduce using rule 54 (factor -> NUMF .)
+
+
+state 30
+
+    (10) statement -> read_stmt .
+
+    ELSE            reduce using rule 10 (statement -> read_stmt .)
+    ;               reduce using rule 10 (statement -> read_stmt .)
+    {               reduce using rule 10 (statement -> read_stmt .)
+    IF              reduce using rule 10 (statement -> read_stmt .)
+    WHILE           reduce using rule 10 (statement -> read_stmt .)
+    WRITE           reduce using rule 10 (statement -> read_stmt .)
+    READ            reduce using rule 10 (statement -> read_stmt .)
+    [               reduce using rule 10 (statement -> read_stmt .)
+    INT             reduce using rule 10 (statement -> read_stmt .)
+    REAL            reduce using rule 10 (statement -> read_stmt .)
+    ID              reduce using rule 10 (statement -> read_stmt .)
+    (               reduce using rule 10 (statement -> read_stmt .)
+    NUM             reduce using rule 10 (statement -> read_stmt .)
+    NUMF            reduce using rule 10 (statement -> read_stmt .)
+    $end            reduce using rule 10 (statement -> read_stmt .)
+    }               reduce using rule 10 (statement -> read_stmt .)
+
+
+state 31
+
+    (21) expression_stmt -> expression ; .
+
+    }               reduce using rule 21 (expression_stmt -> expression ; .)
+    ;               reduce using rule 21 (expression_stmt -> expression ; .)
+    {               reduce using rule 21 (expression_stmt -> expression ; .)
+    IF              reduce using rule 21 (expression_stmt -> expression ; .)
+    WHILE           reduce using rule 21 (expression_stmt -> expression ; .)
+    WRITE           reduce using rule 21 (expression_stmt -> expression ; .)
+    READ            reduce using rule 21 (expression_stmt -> expression ; .)
+    [               reduce using rule 21 (expression_stmt -> expression ; .)
+    INT             reduce using rule 21 (expression_stmt -> expression ; .)
+    REAL            reduce using rule 21 (expression_stmt -> expression ; .)
+    ID              reduce using rule 21 (expression_stmt -> expression ; .)
+    (               reduce using rule 21 (expression_stmt -> expression ; .)
+    NUM             reduce using rule 21 (expression_stmt -> expression ; .)
+    NUMF            reduce using rule 21 (expression_stmt -> expression ; .)
+    ELSE            reduce using rule 21 (expression_stmt -> expression ; .)
+    $end            reduce using rule 21 (expression_stmt -> expression ; .)
+
+
+state 32
+
+    (12) read_stmt -> READ ( . ID )
+
+    ID              shift and go to state 58
+
+
+state 33
+
+    (47) term -> term mulop . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+    ID              shift and go to state 13
+
+    factor                         shift and go to state 59
+    var                            shift and go to state 54
+
+state 34
+
+    (50) mulop -> / .
+
+    (               reduce using rule 50 (mulop -> / .)
+    NUM             reduce using rule 50 (mulop -> / .)
+    NUMF            reduce using rule 50 (mulop -> / .)
+    ID              reduce using rule 50 (mulop -> / .)
+
+
+state 35
+
+    (49) mulop -> * .
+
+    (               reduce using rule 49 (mulop -> * .)
+    NUM             reduce using rule 49 (mulop -> * .)
+    NUMF            reduce using rule 49 (mulop -> * .)
+    ID              reduce using rule 49 (mulop -> * .)
+
+
+state 36
+
+    (26) expression -> var = . expression
+    (26) expression -> . var = expression
+    (27) expression -> . simple_expression
+    (28) expression -> . [ array ]
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+    (35) simple_expression -> . additive_expression relop additive_expression
+    (36) simple_expression -> . additive_expression
+    (43) additive_expression -> . additive_expression addop term
+    (44) additive_expression -> . term
+    (47) term -> . term mulop factor
+    (48) term -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+
+    [               shift and go to state 28
+    ID              shift and go to state 13
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+
+    simple_expression              shift and go to state 3
+    factor                         shift and go to state 10
+    expression                     shift and go to state 60
+    term                           shift and go to state 9
+    additive_expression            shift and go to state 25
+    var                            shift and go to state 11
+
+state 37
+
+    (34) var -> ID [ . expression ]
+    (26) expression -> . var = expression
+    (27) expression -> . simple_expression
+    (28) expression -> . [ array ]
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+    (35) simple_expression -> . additive_expression relop additive_expression
+    (36) simple_expression -> . additive_expression
+    (43) additive_expression -> . additive_expression addop term
+    (44) additive_expression -> . term
+    (47) term -> . term mulop factor
+    (48) term -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+
+    [               shift and go to state 28
+    ID              shift and go to state 13
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+
+    simple_expression              shift and go to state 3
+    factor                         shift and go to state 10
+    expression                     shift and go to state 61
+    term                           shift and go to state 9
+    additive_expression            shift and go to state 25
+    var                            shift and go to state 11
+
+state 38
+
+    (11) write_stmt -> WRITE ( . expression )
+    (26) expression -> . var = expression
+    (27) expression -> . simple_expression
+    (28) expression -> . [ array ]
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+    (35) simple_expression -> . additive_expression relop additive_expression
+    (36) simple_expression -> . additive_expression
+    (43) additive_expression -> . additive_expression addop term
+    (44) additive_expression -> . term
+    (47) term -> . term mulop factor
+    (48) term -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+
+    [               shift and go to state 28
+    ID              shift and go to state 13
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+
+    simple_expression              shift and go to state 3
+    factor                         shift and go to state 10
+    expression                     shift and go to state 62
+    term                           shift and go to state 9
+    additive_expression            shift and go to state 25
+    var                            shift and go to state 11
+
+state 39
+
+    (16) var_declaration -> type_specifier ID . ;
+    (17) var_declaration -> type_specifier ID . [ NUM ] ;
+    (18) var_declaration -> type_specifier ID . = expression ;
+
+    ;               shift and go to state 63
+    [               shift and go to state 65
+    =               shift and go to state 64
+
+
+state 40
+
+    (51) factor -> ( expression . )
+
+    )               shift and go to state 66
+
+
+state 41
+
+    (23) selection_stmt -> IF ( . expression ) statement
+    (24) selection_stmt -> IF ( . expression ) statement ELSE statement
+    (26) expression -> . var = expression
+    (27) expression -> . simple_expression
+    (28) expression -> . [ array ]
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+    (35) simple_expression -> . additive_expression relop additive_expression
+    (36) simple_expression -> . additive_expression
+    (43) additive_expression -> . additive_expression addop term
+    (44) additive_expression -> . term
+    (47) term -> . term mulop factor
+    (48) term -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+
+    [               shift and go to state 28
+    ID              shift and go to state 13
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+
+    simple_expression              shift and go to state 3
+    factor                         shift and go to state 10
+    expression                     shift and go to state 67
+    term                           shift and go to state 9
+    additive_expression            shift and go to state 25
+    var                            shift and go to state 11
+
+state 42
+
+    (41) relop -> EE .
+
+    (               reduce using rule 41 (relop -> EE .)
+    NUM             reduce using rule 41 (relop -> EE .)
+    NUMF            reduce using rule 41 (relop -> EE .)
+    ID              reduce using rule 41 (relop -> EE .)
+
+
+state 43
+
+    (43) additive_expression -> additive_expression addop . term
+    (47) term -> . term mulop factor
+    (48) term -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+    ID              shift and go to state 13
+
+    factor                         shift and go to state 10
+    term                           shift and go to state 68
+    var                            shift and go to state 54
+
+state 44
+
+    (35) simple_expression -> additive_expression relop . additive_expression
+    (43) additive_expression -> . additive_expression addop term
+    (44) additive_expression -> . term
+    (47) term -> . term mulop factor
+    (48) term -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+    ID              shift and go to state 13
+
+    factor                         shift and go to state 10
+    var                            shift and go to state 54
+    term                           shift and go to state 9
+    additive_expression            shift and go to state 69
+
+state 45
+
+    (38) relop -> < .
+
+    (               reduce using rule 38 (relop -> < .)
+    NUM             reduce using rule 38 (relop -> < .)
+    NUMF            reduce using rule 38 (relop -> < .)
+    ID              reduce using rule 38 (relop -> < .)
+
+
+state 46
+
+    (37) relop -> LE .
+
+    (               reduce using rule 37 (relop -> LE .)
+    NUM             reduce using rule 37 (relop -> LE .)
+    NUMF            reduce using rule 37 (relop -> LE .)
+    ID              reduce using rule 37 (relop -> LE .)
+
+
+state 47
+
+    (39) relop -> > .
+
+    (               reduce using rule 39 (relop -> > .)
+    NUM             reduce using rule 39 (relop -> > .)
+    NUMF            reduce using rule 39 (relop -> > .)
+    ID              reduce using rule 39 (relop -> > .)
+
+
+state 48
+
+    (46) addop -> - .
+
+    (               reduce using rule 46 (addop -> - .)
+    NUM             reduce using rule 46 (addop -> - .)
+    NUMF            reduce using rule 46 (addop -> - .)
+    ID              reduce using rule 46 (addop -> - .)
+
+
+state 49
+
+    (40) relop -> GE .
+
+    (               reduce using rule 40 (relop -> GE .)
+    NUM             reduce using rule 40 (relop -> GE .)
+    NUMF            reduce using rule 40 (relop -> GE .)
+    ID              reduce using rule 40 (relop -> GE .)
+
+
+state 50
+
+    (45) addop -> + .
+
+    (               reduce using rule 45 (addop -> + .)
+    NUM             reduce using rule 45 (addop -> + .)
+    NUMF            reduce using rule 45 (addop -> + .)
+    ID              reduce using rule 45 (addop -> + .)
+
+
+state 51
+
+    (42) relop -> NE .
+
+    (               reduce using rule 42 (relop -> NE .)
+    NUM             reduce using rule 42 (relop -> NE .)
+    NUMF            reduce using rule 42 (relop -> NE .)
+    ID              reduce using rule 42 (relop -> NE .)
+
+
+state 52
+
+    (25) iteration_stmt -> WHILE ( . expression ) statement
+    (26) expression -> . var = expression
+    (27) expression -> . simple_expression
+    (28) expression -> . [ array ]
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+    (35) simple_expression -> . additive_expression relop additive_expression
+    (36) simple_expression -> . additive_expression
+    (43) additive_expression -> . additive_expression addop term
+    (44) additive_expression -> . term
+    (47) term -> . term mulop factor
+    (48) term -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+
+    [               shift and go to state 28
+    ID              shift and go to state 13
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+
+    simple_expression              shift and go to state 3
+    factor                         shift and go to state 10
+    expression                     shift and go to state 70
+    term                           shift and go to state 9
+    additive_expression            shift and go to state 25
+    var                            shift and go to state 11
+
+state 53
+
+    (13) compound_stmt -> { local_declarations . statement_list }
+    (14) local_declarations -> local_declarations . var_declaration
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> .
+    (16) var_declaration -> . type_specifier ID ;
+    (17) var_declaration -> . type_specifier ID [ NUM ] ;
+    (18) var_declaration -> . type_specifier ID = expression ;
+    (19) type_specifier -> . INT
+    (20) type_specifier -> . REAL
+
+  ! shift/reduce conflict for INT resolved as shift
+  ! shift/reduce conflict for REAL resolved as shift
+    }               reduce using rule 3 (statement_list -> .)
+    ;               reduce using rule 3 (statement_list -> .)
+    {               reduce using rule 3 (statement_list -> .)
+    IF              reduce using rule 3 (statement_list -> .)
+    WHILE           reduce using rule 3 (statement_list -> .)
+    WRITE           reduce using rule 3 (statement_list -> .)
+    READ            reduce using rule 3 (statement_list -> .)
+    [               reduce using rule 3 (statement_list -> .)
+    ID              reduce using rule 3 (statement_list -> .)
+    (               reduce using rule 3 (statement_list -> .)
+    NUM             reduce using rule 3 (statement_list -> .)
+    NUMF            reduce using rule 3 (statement_list -> .)
+    INT             shift and go to state 6
+    REAL            shift and go to state 4
+
+  ! INT             [ reduce using rule 3 (statement_list -> .) ]
+  ! REAL            [ reduce using rule 3 (statement_list -> .) ]
+
+    var_declaration                shift and go to state 71
+    type_specifier                 shift and go to state 16
+    statement_list                 shift and go to state 72
+
+state 54
+
+    (52) factor -> var .
+
+    *               reduce using rule 52 (factor -> var .)
+    /               reduce using rule 52 (factor -> var .)
+    LE              reduce using rule 52 (factor -> var .)
+    <               reduce using rule 52 (factor -> var .)
+    >               reduce using rule 52 (factor -> var .)
+    GE              reduce using rule 52 (factor -> var .)
+    EE              reduce using rule 52 (factor -> var .)
+    NE              reduce using rule 52 (factor -> var .)
+    +               reduce using rule 52 (factor -> var .)
+    -               reduce using rule 52 (factor -> var .)
+    ;               reduce using rule 52 (factor -> var .)
+    )               reduce using rule 52 (factor -> var .)
+    ]               reduce using rule 52 (factor -> var .)
+    ,               reduce using rule 52 (factor -> var .)
+
+
+state 55
+
+    (28) expression -> [ array . ]
+
+    ]               shift and go to state 73
+
+
+state 56
+
+    (29) array -> array_list .
+    (31) array_list -> array_list . , array_list
+
+    ]               reduce using rule 29 (array -> array_list .)
+    ,               shift and go to state 74
+
+
+state 57
+
+    (32) array_list -> factor .
+
+    ,               reduce using rule 32 (array_list -> factor .)
+    ]               reduce using rule 32 (array_list -> factor .)
+
+
+state 58
+
+    (12) read_stmt -> READ ( ID . )
+
+    )               shift and go to state 75
+
+
+state 59
+
+    (47) term -> term mulop factor .
+
+    *               reduce using rule 47 (term -> term mulop factor .)
+    /               reduce using rule 47 (term -> term mulop factor .)
+    LE              reduce using rule 47 (term -> term mulop factor .)
+    <               reduce using rule 47 (term -> term mulop factor .)
+    >               reduce using rule 47 (term -> term mulop factor .)
+    GE              reduce using rule 47 (term -> term mulop factor .)
+    EE              reduce using rule 47 (term -> term mulop factor .)
+    NE              reduce using rule 47 (term -> term mulop factor .)
+    +               reduce using rule 47 (term -> term mulop factor .)
+    -               reduce using rule 47 (term -> term mulop factor .)
+    )               reduce using rule 47 (term -> term mulop factor .)
+    ;               reduce using rule 47 (term -> term mulop factor .)
+    ]               reduce using rule 47 (term -> term mulop factor .)
+
+
+state 60
+
+    (26) expression -> var = expression .
+
+    )               reduce using rule 26 (expression -> var = expression .)
+    ]               reduce using rule 26 (expression -> var = expression .)
+    ;               reduce using rule 26 (expression -> var = expression .)
+
+
+state 61
+
+    (34) var -> ID [ expression . ]
+
+    ]               shift and go to state 76
+
+
+state 62
+
+    (11) write_stmt -> WRITE ( expression . )
+
+    )               shift and go to state 77
+
+
+state 63
+
+    (16) var_declaration -> type_specifier ID ; .
+
+    ELSE            reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    ;               reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    {               reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    IF              reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    WHILE           reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    WRITE           reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    READ            reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    [               reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    INT             reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    REAL            reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    ID              reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    (               reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    NUM             reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    NUMF            reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    $end            reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+    }               reduce using rule 16 (var_declaration -> type_specifier ID ; .)
+
+
+state 64
+
+    (18) var_declaration -> type_specifier ID = . expression ;
+    (26) expression -> . var = expression
+    (27) expression -> . simple_expression
+    (28) expression -> . [ array ]
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+    (35) simple_expression -> . additive_expression relop additive_expression
+    (36) simple_expression -> . additive_expression
+    (43) additive_expression -> . additive_expression addop term
+    (44) additive_expression -> . term
+    (47) term -> . term mulop factor
+    (48) term -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+
+    [               shift and go to state 28
+    ID              shift and go to state 13
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+
+    simple_expression              shift and go to state 3
+    factor                         shift and go to state 10
+    expression                     shift and go to state 78
+    term                           shift and go to state 9
+    additive_expression            shift and go to state 25
+    var                            shift and go to state 11
+
+state 65
+
+    (17) var_declaration -> type_specifier ID [ . NUM ] ;
+
+    NUM             shift and go to state 79
+
+
+state 66
+
+    (51) factor -> ( expression ) .
+
+    *               reduce using rule 51 (factor -> ( expression ) .)
+    /               reduce using rule 51 (factor -> ( expression ) .)
+    LE              reduce using rule 51 (factor -> ( expression ) .)
+    <               reduce using rule 51 (factor -> ( expression ) .)
+    >               reduce using rule 51 (factor -> ( expression ) .)
+    GE              reduce using rule 51 (factor -> ( expression ) .)
+    EE              reduce using rule 51 (factor -> ( expression ) .)
+    NE              reduce using rule 51 (factor -> ( expression ) .)
+    +               reduce using rule 51 (factor -> ( expression ) .)
+    -               reduce using rule 51 (factor -> ( expression ) .)
+    )               reduce using rule 51 (factor -> ( expression ) .)
+    ;               reduce using rule 51 (factor -> ( expression ) .)
+    ]               reduce using rule 51 (factor -> ( expression ) .)
+    ,               reduce using rule 51 (factor -> ( expression ) .)
+
+
+state 67
+
+    (23) selection_stmt -> IF ( expression . ) statement
+    (24) selection_stmt -> IF ( expression . ) statement ELSE statement
+
+    )               shift and go to state 80
+
+
+state 68
+
+    (43) additive_expression -> additive_expression addop term .
+    (47) term -> term . mulop factor
+    (49) mulop -> . *
+    (50) mulop -> . /
+
+    LE              reduce using rule 43 (additive_expression -> additive_expression addop term .)
+    <               reduce using rule 43 (additive_expression -> additive_expression addop term .)
+    >               reduce using rule 43 (additive_expression -> additive_expression addop term .)
+    GE              reduce using rule 43 (additive_expression -> additive_expression addop term .)
+    EE              reduce using rule 43 (additive_expression -> additive_expression addop term .)
+    NE              reduce using rule 43 (additive_expression -> additive_expression addop term .)
+    +               reduce using rule 43 (additive_expression -> additive_expression addop term .)
+    -               reduce using rule 43 (additive_expression -> additive_expression addop term .)
+    ;               reduce using rule 43 (additive_expression -> additive_expression addop term .)
+    )               reduce using rule 43 (additive_expression -> additive_expression addop term .)
+    ]               reduce using rule 43 (additive_expression -> additive_expression addop term .)
+    *               shift and go to state 35
+    /               shift and go to state 34
+
+    mulop                          shift and go to state 33
+
+state 69
+
+    (35) simple_expression -> additive_expression relop additive_expression .
+    (43) additive_expression -> additive_expression . addop term
+    (45) addop -> . +
+    (46) addop -> . -
+
+    )               reduce using rule 35 (simple_expression -> additive_expression relop additive_expression .)
+    ;               reduce using rule 35 (simple_expression -> additive_expression relop additive_expression .)
+    ]               reduce using rule 35 (simple_expression -> additive_expression relop additive_expression .)
+    +               shift and go to state 50
+    -               shift and go to state 48
+
+    addop                          shift and go to state 43
+
+state 70
+
+    (25) iteration_stmt -> WHILE ( expression . ) statement
+
+    )               shift and go to state 81
+
+
+state 71
+
+    (14) local_declarations -> local_declarations var_declaration .
+
+    INT             reduce using rule 14 (local_declarations -> local_declarations var_declaration .)
+    REAL            reduce using rule 14 (local_declarations -> local_declarations var_declaration .)
+    }               reduce using rule 14 (local_declarations -> local_declarations var_declaration .)
+    ;               reduce using rule 14 (local_declarations -> local_declarations var_declaration .)
+    {               reduce using rule 14 (local_declarations -> local_declarations var_declaration .)
+    IF              reduce using rule 14 (local_declarations -> local_declarations var_declaration .)
+    WHILE           reduce using rule 14 (local_declarations -> local_declarations var_declaration .)
+    WRITE           reduce using rule 14 (local_declarations -> local_declarations var_declaration .)
+    READ            reduce using rule 14 (local_declarations -> local_declarations var_declaration .)
+    [               reduce using rule 14 (local_declarations -> local_declarations var_declaration .)
+    ID              reduce using rule 14 (local_declarations -> local_declarations var_declaration .)
+    (               reduce using rule 14 (local_declarations -> local_declarations var_declaration .)
+    NUM             reduce using rule 14 (local_declarations -> local_declarations var_declaration .)
+    NUMF            reduce using rule 14 (local_declarations -> local_declarations var_declaration .)
+
+
+state 72
+
+    (13) compound_stmt -> { local_declarations statement_list . }
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . expression_stmt
+    (5) statement -> . compound_stmt
+    (6) statement -> . selection_stmt
+    (7) statement -> . iteration_stmt
+    (8) statement -> . var_declaration
+    (9) statement -> . write_stmt
+    (10) statement -> . read_stmt
+    (21) expression_stmt -> . expression ;
+    (22) expression_stmt -> . ;
+    (13) compound_stmt -> . { local_declarations statement_list }
+    (23) selection_stmt -> . IF ( expression ) statement
+    (24) selection_stmt -> . IF ( expression ) statement ELSE statement
+    (25) iteration_stmt -> . WHILE ( expression ) statement
+    (16) var_declaration -> . type_specifier ID ;
+    (17) var_declaration -> . type_specifier ID [ NUM ] ;
+    (18) var_declaration -> . type_specifier ID = expression ;
+    (11) write_stmt -> . WRITE ( expression )
+    (12) read_stmt -> . READ ( ID )
+    (26) expression -> . var = expression
+    (27) expression -> . simple_expression
+    (28) expression -> . [ array ]
+    (19) type_specifier -> . INT
+    (20) type_specifier -> . REAL
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+    (35) simple_expression -> . additive_expression relop additive_expression
+    (36) simple_expression -> . additive_expression
+    (43) additive_expression -> . additive_expression addop term
+    (44) additive_expression -> . term
+    (47) term -> . term mulop factor
+    (48) term -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+
+    }               shift and go to state 82
+    ;               shift and go to state 21
+    {               shift and go to state 27
+    IF              shift and go to state 22
+    WHILE           shift and go to state 26
+    WRITE           shift and go to state 14
+    READ            shift and go to state 8
+    [               shift and go to state 28
+    INT             shift and go to state 6
+    REAL            shift and go to state 4
+    ID              shift and go to state 13
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+
+    additive_expression            shift and go to state 25
+    write_stmt                     shift and go to state 20
+    var_declaration                shift and go to state 23
+    expression                     shift and go to state 5
+    term                           shift and go to state 9
+    iteration_stmt                 shift and go to state 7
+    var                            shift and go to state 11
+    selection_stmt                 shift and go to state 15
+    simple_expression              shift and go to state 3
+    factor                         shift and go to state 10
+    statement                      shift and go to state 12
+    compound_stmt                  shift and go to state 24
+    type_specifier                 shift and go to state 16
+    read_stmt                      shift and go to state 30
+    expression_stmt                shift and go to state 18
+
+state 73
+
+    (28) expression -> [ array ] .
+
+    )               reduce using rule 28 (expression -> [ array ] .)
+    ]               reduce using rule 28 (expression -> [ array ] .)
+    ;               reduce using rule 28 (expression -> [ array ] .)
+
+
+state 74
+
+    (31) array_list -> array_list , . array_list
+    (31) array_list -> . array_list , array_list
+    (32) array_list -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+    ID              shift and go to state 13
+
+    factor                         shift and go to state 57
+    array_list                     shift and go to state 83
+    var                            shift and go to state 54
+
+state 75
+
+    (12) read_stmt -> READ ( ID ) .
+
+    }               reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    ;               reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    {               reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    IF              reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    WHILE           reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    WRITE           reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    READ            reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    [               reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    INT             reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    REAL            reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    ID              reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    (               reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    NUM             reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    NUMF            reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    ELSE            reduce using rule 12 (read_stmt -> READ ( ID ) .)
+    $end            reduce using rule 12 (read_stmt -> READ ( ID ) .)
+
+
+state 76
+
+    (34) var -> ID [ expression ] .
+
+    =               reduce using rule 34 (var -> ID [ expression ] .)
+    *               reduce using rule 34 (var -> ID [ expression ] .)
+    /               reduce using rule 34 (var -> ID [ expression ] .)
+    LE              reduce using rule 34 (var -> ID [ expression ] .)
+    <               reduce using rule 34 (var -> ID [ expression ] .)
+    >               reduce using rule 34 (var -> ID [ expression ] .)
+    GE              reduce using rule 34 (var -> ID [ expression ] .)
+    EE              reduce using rule 34 (var -> ID [ expression ] .)
+    NE              reduce using rule 34 (var -> ID [ expression ] .)
+    +               reduce using rule 34 (var -> ID [ expression ] .)
+    -               reduce using rule 34 (var -> ID [ expression ] .)
+    ;               reduce using rule 34 (var -> ID [ expression ] .)
+    )               reduce using rule 34 (var -> ID [ expression ] .)
+    ]               reduce using rule 34 (var -> ID [ expression ] .)
+    ,               reduce using rule 34 (var -> ID [ expression ] .)
+
+
+state 77
+
+    (11) write_stmt -> WRITE ( expression ) .
+
+    ELSE            reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    ;               reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    {               reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    IF              reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    WHILE           reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    WRITE           reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    READ            reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    [               reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    INT             reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    REAL            reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    ID              reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    (               reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    NUM             reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    NUMF            reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    $end            reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+    }               reduce using rule 11 (write_stmt -> WRITE ( expression ) .)
+
+
+state 78
+
+    (18) var_declaration -> type_specifier ID = expression . ;
+
+    ;               shift and go to state 84
+
+
+state 79
+
+    (17) var_declaration -> type_specifier ID [ NUM . ] ;
+
+    ]               shift and go to state 85
+
+
+state 80
+
+    (23) selection_stmt -> IF ( expression ) . statement
+    (24) selection_stmt -> IF ( expression ) . statement ELSE statement
+    (4) statement -> . expression_stmt
+    (5) statement -> . compound_stmt
+    (6) statement -> . selection_stmt
+    (7) statement -> . iteration_stmt
+    (8) statement -> . var_declaration
+    (9) statement -> . write_stmt
+    (10) statement -> . read_stmt
+    (21) expression_stmt -> . expression ;
+    (22) expression_stmt -> . ;
+    (13) compound_stmt -> . { local_declarations statement_list }
+    (23) selection_stmt -> . IF ( expression ) statement
+    (24) selection_stmt -> . IF ( expression ) statement ELSE statement
+    (25) iteration_stmt -> . WHILE ( expression ) statement
+    (16) var_declaration -> . type_specifier ID ;
+    (17) var_declaration -> . type_specifier ID [ NUM ] ;
+    (18) var_declaration -> . type_specifier ID = expression ;
+    (11) write_stmt -> . WRITE ( expression )
+    (12) read_stmt -> . READ ( ID )
+    (26) expression -> . var = expression
+    (27) expression -> . simple_expression
+    (28) expression -> . [ array ]
+    (19) type_specifier -> . INT
+    (20) type_specifier -> . REAL
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+    (35) simple_expression -> . additive_expression relop additive_expression
+    (36) simple_expression -> . additive_expression
+    (43) additive_expression -> . additive_expression addop term
+    (44) additive_expression -> . term
+    (47) term -> . term mulop factor
+    (48) term -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+
+    ;               shift and go to state 21
+    {               shift and go to state 27
+    IF              shift and go to state 22
+    WHILE           shift and go to state 26
+    WRITE           shift and go to state 14
+    READ            shift and go to state 8
+    [               shift and go to state 28
+    INT             shift and go to state 6
+    REAL            shift and go to state 4
+    ID              shift and go to state 13
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+
+    additive_expression            shift and go to state 25
+    write_stmt                     shift and go to state 20
+    var_declaration                shift and go to state 23
+    expression                     shift and go to state 5
+    term                           shift and go to state 9
+    var                            shift and go to state 11
+    iteration_stmt                 shift and go to state 7
+    simple_expression              shift and go to state 3
+    factor                         shift and go to state 10
+    statement                      shift and go to state 86
+    compound_stmt                  shift and go to state 24
+    selection_stmt                 shift and go to state 15
+    type_specifier                 shift and go to state 16
+    read_stmt                      shift and go to state 30
+    expression_stmt                shift and go to state 18
+
+state 81
+
+    (25) iteration_stmt -> WHILE ( expression ) . statement
+    (4) statement -> . expression_stmt
+    (5) statement -> . compound_stmt
+    (6) statement -> . selection_stmt
+    (7) statement -> . iteration_stmt
+    (8) statement -> . var_declaration
+    (9) statement -> . write_stmt
+    (10) statement -> . read_stmt
+    (21) expression_stmt -> . expression ;
+    (22) expression_stmt -> . ;
+    (13) compound_stmt -> . { local_declarations statement_list }
+    (23) selection_stmt -> . IF ( expression ) statement
+    (24) selection_stmt -> . IF ( expression ) statement ELSE statement
+    (25) iteration_stmt -> . WHILE ( expression ) statement
+    (16) var_declaration -> . type_specifier ID ;
+    (17) var_declaration -> . type_specifier ID [ NUM ] ;
+    (18) var_declaration -> . type_specifier ID = expression ;
+    (11) write_stmt -> . WRITE ( expression )
+    (12) read_stmt -> . READ ( ID )
+    (26) expression -> . var = expression
+    (27) expression -> . simple_expression
+    (28) expression -> . [ array ]
+    (19) type_specifier -> . INT
+    (20) type_specifier -> . REAL
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+    (35) simple_expression -> . additive_expression relop additive_expression
+    (36) simple_expression -> . additive_expression
+    (43) additive_expression -> . additive_expression addop term
+    (44) additive_expression -> . term
+    (47) term -> . term mulop factor
+    (48) term -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+
+    ;               shift and go to state 21
+    {               shift and go to state 27
+    IF              shift and go to state 22
+    WHILE           shift and go to state 26
+    WRITE           shift and go to state 14
+    READ            shift and go to state 8
+    [               shift and go to state 28
+    INT             shift and go to state 6
+    REAL            shift and go to state 4
+    ID              shift and go to state 13
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+
+    additive_expression            shift and go to state 25
+    write_stmt                     shift and go to state 20
+    var_declaration                shift and go to state 23
+    expression                     shift and go to state 5
+    term                           shift and go to state 9
+    var                            shift and go to state 11
+    iteration_stmt                 shift and go to state 7
+    simple_expression              shift and go to state 3
+    factor                         shift and go to state 10
+    statement                      shift and go to state 87
+    compound_stmt                  shift and go to state 24
+    selection_stmt                 shift and go to state 15
+    type_specifier                 shift and go to state 16
+    read_stmt                      shift and go to state 30
+    expression_stmt                shift and go to state 18
+
+state 82
+
+    (13) compound_stmt -> { local_declarations statement_list } .
+
+    }               reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    ;               reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    {               reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    IF              reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    WHILE           reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    WRITE           reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    READ            reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    [               reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    INT             reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    REAL            reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    ID              reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    (               reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    NUM             reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    NUMF            reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    $end            reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+    ELSE            reduce using rule 13 (compound_stmt -> { local_declarations statement_list } .)
+
+
+state 83
+
+    (31) array_list -> array_list , array_list .
+    (31) array_list -> array_list . , array_list
+
+  ! shift/reduce conflict for , resolved as shift
+    ]               reduce using rule 31 (array_list -> array_list , array_list .)
+    ,               shift and go to state 74
+
+  ! ,               [ reduce using rule 31 (array_list -> array_list , array_list .) ]
+
+
+state 84
+
+    (18) var_declaration -> type_specifier ID = expression ; .
+
+    ELSE            reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    ;               reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    {               reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    IF              reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    WHILE           reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    WRITE           reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    READ            reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    [               reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    INT             reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    REAL            reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    ID              reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    (               reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    NUM             reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    NUMF            reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    $end            reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+    }               reduce using rule 18 (var_declaration -> type_specifier ID = expression ; .)
+
+
+state 85
+
+    (17) var_declaration -> type_specifier ID [ NUM ] . ;
+
+    ;               shift and go to state 88
+
+
+state 86
+
+    (23) selection_stmt -> IF ( expression ) statement .
+    (24) selection_stmt -> IF ( expression ) statement . ELSE statement
+
+  ! shift/reduce conflict for ELSE resolved as shift
+    ;               reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    {               reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    IF              reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    WHILE           reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    WRITE           reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    READ            reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    [               reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    INT             reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    REAL            reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    ID              reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    (               reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    NUM             reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    NUMF            reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    $end            reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    }               reduce using rule 23 (selection_stmt -> IF ( expression ) statement .)
+    ELSE            shift and go to state 89
+
+  ! ELSE            [ reduce using rule 23 (selection_stmt -> IF ( expression ) statement .) ]
+
+
+state 87
+
+    (25) iteration_stmt -> WHILE ( expression ) statement .
+
+    ELSE            reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    ;               reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    {               reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    IF              reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    WHILE           reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    WRITE           reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    READ            reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    [               reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    INT             reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    REAL            reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    ID              reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    (               reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    NUM             reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    NUMF            reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    $end            reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+    }               reduce using rule 25 (iteration_stmt -> WHILE ( expression ) statement .)
+
+
+state 88
+
+    (17) var_declaration -> type_specifier ID [ NUM ] ; .
+
+    ELSE            reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    ;               reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    {               reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    IF              reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    WHILE           reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    WRITE           reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    READ            reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    [               reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    INT             reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    REAL            reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    ID              reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    (               reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    NUM             reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    NUMF            reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    $end            reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+    }               reduce using rule 17 (var_declaration -> type_specifier ID [ NUM ] ; .)
+
+
+state 89
+
+    (24) selection_stmt -> IF ( expression ) statement ELSE . statement
+    (4) statement -> . expression_stmt
+    (5) statement -> . compound_stmt
+    (6) statement -> . selection_stmt
+    (7) statement -> . iteration_stmt
+    (8) statement -> . var_declaration
+    (9) statement -> . write_stmt
+    (10) statement -> . read_stmt
+    (21) expression_stmt -> . expression ;
+    (22) expression_stmt -> . ;
+    (13) compound_stmt -> . { local_declarations statement_list }
+    (23) selection_stmt -> . IF ( expression ) statement
+    (24) selection_stmt -> . IF ( expression ) statement ELSE statement
+    (25) iteration_stmt -> . WHILE ( expression ) statement
+    (16) var_declaration -> . type_specifier ID ;
+    (17) var_declaration -> . type_specifier ID [ NUM ] ;
+    (18) var_declaration -> . type_specifier ID = expression ;
+    (11) write_stmt -> . WRITE ( expression )
+    (12) read_stmt -> . READ ( ID )
+    (26) expression -> . var = expression
+    (27) expression -> . simple_expression
+    (28) expression -> . [ array ]
+    (19) type_specifier -> . INT
+    (20) type_specifier -> . REAL
+    (33) var -> . ID
+    (34) var -> . ID [ expression ]
+    (35) simple_expression -> . additive_expression relop additive_expression
+    (36) simple_expression -> . additive_expression
+    (43) additive_expression -> . additive_expression addop term
+    (44) additive_expression -> . term
+    (47) term -> . term mulop factor
+    (48) term -> . factor
+    (51) factor -> . ( expression )
+    (52) factor -> . var
+    (53) factor -> . NUM
+    (54) factor -> . NUMF
+
+    ;               shift and go to state 21
+    {               shift and go to state 27
+    IF              shift and go to state 22
+    WHILE           shift and go to state 26
+    WRITE           shift and go to state 14
+    READ            shift and go to state 8
+    [               shift and go to state 28
+    INT             shift and go to state 6
+    REAL            shift and go to state 4
+    ID              shift and go to state 13
+    (               shift and go to state 17
+    NUM             shift and go to state 19
+    NUMF            shift and go to state 29
+
+    additive_expression            shift and go to state 25
+    write_stmt                     shift and go to state 20
+    var_declaration                shift and go to state 23
+    expression                     shift and go to state 5
+    term                           shift and go to state 9
+    var                            shift and go to state 11
+    iteration_stmt                 shift and go to state 7
+    simple_expression              shift and go to state 3
+    factor                         shift and go to state 10
+    statement                      shift and go to state 90
+    compound_stmt                  shift and go to state 24
+    selection_stmt                 shift and go to state 15
+    type_specifier                 shift and go to state 16
+    read_stmt                      shift and go to state 30
+    expression_stmt                shift and go to state 18
+
+state 90
+
+    (24) selection_stmt -> IF ( expression ) statement ELSE statement .
+
+    ;               reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    {               reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    IF              reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    WHILE           reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    WRITE           reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    READ            reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    [               reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    INT             reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    REAL            reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    ID              reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    (               reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    NUM             reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    NUMF            reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    $end            reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    ELSE            reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+    }               reduce using rule 24 (selection_stmt -> IF ( expression ) statement ELSE statement .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for INT in state 53 resolved as shift
+WARNING: shift/reduce conflict for REAL in state 53 resolved as shift
+WARNING: shift/reduce conflict for , in state 83 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 86 resolved as shift
