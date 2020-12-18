@@ -137,8 +137,8 @@ class Node:
         if len(self.children) == 5:
             typ = Node.resolve(self.children[0])
             a = Node.resolve(self.children[3])
+            global data
             if data != []:
-                global data
                 num = data
                 data = []
             elif type(a) == str:
