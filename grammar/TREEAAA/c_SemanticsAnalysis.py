@@ -56,6 +56,18 @@ class Node:
         return a
 
     @staticmethod
+    def dfs_showdir(tree, depth):
+        for item in tree:
+            if item is None:
+                continue
+            elif type(item) is not Node:
+                print("|      " * depth + "+--" + item)
+                continue
+            print("|      " * depth + "+--" + item.type)
+            bitem = item.children
+            if not (len(bitem) == 1 and type(bitem[0]) is not Node):
+                Node.dfs_showdir(bitem, depth + 1)
+    @staticmethod
     def star(self):
         if self == None:
             return

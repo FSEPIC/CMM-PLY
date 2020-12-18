@@ -383,11 +383,19 @@ ISTEST = True # 打开测试
 if ISTEST:
     try:
         get_Grammar()
-        with open('6.c')as f:
+        with open('4.c')as f:
             contents = f.read()
         x = yacc.parse(contents)
         # Node.star(x)
         Node.resolve(x)
+        # os.remove('Tree.txt')
+        # file = open('Tree.txt','w+')
+        # Node.PT(x,0,file)
+        # file.close()
+        print("+--" + x.type)
+        Node.dfs_showdir(x.children, 1)
+        # Node.star(x)
+        # print(x.leaf)
         if(error_num==0):
             print("grammar is true")
     except EOFError:
