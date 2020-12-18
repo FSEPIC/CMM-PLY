@@ -1,7 +1,7 @@
 # PLY实现CMM语言
 
 root:[./]
-+--.idea
++--.idea\n
 |      +--.name
 |      +--inspectionProfiles
 |      |      +--profiles_settings.xml
