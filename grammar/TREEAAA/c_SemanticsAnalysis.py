@@ -1,7 +1,5 @@
-#字母表
 import sys
-
-
+#字母表
 class IDLIST:
     def __init__(self,t,n,v):
         self.type=t;
@@ -9,13 +7,13 @@ class IDLIST:
         self.value=v;
         self.data="error";
 
-
 MyIdList = []
 data = []
 
 #树解析
 class Node:
     def __init__(self, type, children=None,ac=''):
+        self.leaf = 0
         self.action = ac
         self.type = type
         if children:
@@ -24,6 +22,37 @@ class Node:
             self.children = []
         if self.action == '':
             self.action = self.ac(type)
+
+    @staticmethod
+    def star(self):
+        if self == None:
+            return
+        if type(self) != Node:
+            return
+        for x in self.children:
+            if type(self.children) != Node:
+                self.leaf = self.leaf + 1
+        if len(self.children) >= 1:
+            for x in self.children:
+                self.star(x)
+                if type(self.children) == Node:
+                    self.leaf = self.leaf + x.leaf
+            print(self.leaf)
+        else:
+            print("error")
+
+    @staticmethod
+    def dfs_showdir(tree, depth):
+        for item in tree:
+            if item is None:
+                continue
+            elif type(item) is not Node:
+                print("|      " * depth + "+--" + item)
+                continue
+            print("|      " * depth + "+--" + item.type)
+            bitem = item.children
+            if not (len(bitem) == 1 and type(bitem[0]) is not Node):
+                Node.dfs_showdir(bitem, depth + 1)
 
     def execute(self):
         action_dict = {
@@ -55,20 +84,20 @@ class Node:
             a = Node.resolve(x)
         return a
 
-    @staticmethod
-    def star(self):
-        if self == None:
-            return
-        if type(self) != Node:
-            Node.resolve(self)
-            return
-        if len(self.children) >= 1:
-            for x in self.children:
-                self.star(x)
-            Node.resolve(self)
+    # @staticmethod
+    # def star(self):
+    #     if self == None:
+    #         return
+    #     if type(self) != Node:
+    #         Node.resolve(self)
+    #         return
+    #     if len(self.children) >= 1:
+    #         for x in self.children:
+    #             self.star(x)
+    #         Node.resolve(self)
 
     @staticmethod
-    def PT(self,n):
+    def PT(self,n,file):
         if self == None:
             return
         if type(self) != Node:
@@ -76,9 +105,13 @@ class Node:
         if len(self.children) >= 1:
             for x in self.children:
                 for a in range(n):
+                    file.write('-')
                     print("-",end="")
+                file.write(str(self))
                 print(self)
-                self.PT(x,n+1)
+                file.write('\n')
+                self.PT(x,n+1,file)
+
 
     @staticmethod
     def ac(s):

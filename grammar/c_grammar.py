@@ -21,6 +21,8 @@
 #   3.设置递进规约规则
 #   4.输入产生式列表
 # =============================================================================
+import os
+
 from grammar.TREEAAA.c_SemanticsAnalysis import Node
 
 error_num = 0 #用于记录错误次数
@@ -98,7 +100,7 @@ lex.lex()# 调用Lex模块，构建词法分析器
 #==============================================================================
 def p_program_1(p):
     '''program : statement_list'''
-    p[0] = Node('father', [p[1]])
+    p[0] = Node('program', [p[1]])
 
 def p_statement_list_1(p):
     '''statement_list : statement_list statement'''
@@ -160,7 +162,7 @@ def p_compound_stmt_1(p):
 
 def p_local_declarations_1(p):
     '''local_declarations : local_declarations var_declaration'''
-    p[0] = Node('local', [p[1],p[2]])
+    p[0] = Node('local_declarations', [p[1],p[2]])
 
 
 def p_local_declarations_empty(p):
@@ -184,12 +186,12 @@ def p_var_declaration_3(p):
 
 def p_type_specifier_1(p):
     '''type_specifier : INT'''
-    p[0] = Node('type',[p[1]],'gettype')
+    p[0] = Node('type_specifier',[p[1]],'gettype')
 
 
 def p_type_specifier_2(p):
     '''type_specifier : REAL'''
-    p[0] = Node('type', [p[1]],'gettype')
+    p[0] = Node('type_specifier', [p[1]],'gettype')
 
 
 def p_expression_stmt_1(p):
@@ -219,7 +221,7 @@ def p_iteration_stmt_1(p):
 
 def p_expression_1(p):
     '''expression : var '=' expression'''
-    p[0] = Node('exp', [p[1],p[2],p[3]],'as')
+    p[0] = Node('expr', [p[1],p[2],p[3]],'as')
 
 
 def p_expression_2(p):
@@ -261,7 +263,7 @@ def p_var_2(p):
 
 def p_simple_expression_1(p):
     '''simple_expression : additive_expression relop additive_expression'''
-    p[0] = Node('simple_expression', [p[1],p[2],p[3]],'binop')
+    p[0] = Node('simple_expr', [p[1],p[2],p[3]],'binop')
 
 
 def p_simple_expression_2(p):
@@ -301,12 +303,12 @@ def p_relop_6(p):
 
 def p_additive_expression_1(p):
     '''additive_expression : additive_expression addop term'''
-    p[0] = Node('additive_expression', [p[1],p[2],p[3]],'binop')
+    p[0] = Node('additive_expr', [p[1],p[2],p[3]],'binop')
 
 
 def p_additive_expression_2(p):
     '''additive_expression : term'''
-    p[0] = Node('addi_expr', [p[1]])
+    p[0] = Node('additive_expr', [p[1]])
 
 
 def p_addop_1(p):
@@ -329,7 +331,7 @@ def p_term_2(p):
     p[0] = Node('term', [p[1]])
 
 
-def p_mulop_1(p): 
+def p_mulop_1(p):
     ''' mulop : '*' '''
     p[0] = Node('mulop', [p[1]])
 
@@ -375,6 +377,8 @@ import ply.yacc as yacc
 def get_Grammar():
     yacc.yacc()
 
+
+
 # =============================================================================
 # 测试部分：真正运行时将其注释掉 / 将ISTEST设为False
 # =============================================================================
@@ -383,11 +387,19 @@ ISTEST = True # 打开测试
 if ISTEST:
     try:
         get_Grammar()
-        with open('test.c')as f:
+        with open('1.c')as f:
             contents = f.read()
         x = yacc.parse(contents)
         # Node.star(x)
         Node.resolve(x)
+        # os.remove('Tree.txt')
+        # file = open('Tree.txt','w+')
+        # Node.PT(x,0,file)
+        # file.close()
+        print("+--" + x.type)
+        Node.dfs_showdir(x.children,1)
+        # Node.star(x)
+        # print(x.leaf)
         if(error_num==0):
             print("grammar is true")
     except EOFError:
