@@ -387,7 +387,7 @@ ISTEST = True # 打开测试
 if ISTEST:
     try:
         get_Grammar()
-        with open('1.c')as f:
+        with open('4.c')as f:
             contents = f.read()
         x = yacc.parse(contents)
         # Node.star(x)
