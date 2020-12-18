@@ -22,7 +22,7 @@
 #   4.输入产生式列表
 # =============================================================================
 from grammar.TREEAAA.c_SemanticsAnalysis import Node
-
+import os
 error_num = 0 #用于记录错误次数
 
 # =============================================================================
@@ -388,12 +388,14 @@ if ISTEST:
         x = yacc.parse(contents)
         # Node.star(x)
         Node.resolve(x)
-        # os.remove('Tree.txt')
-        # file = open('Tree.txt','w+')
+        if not os.path.exists('Tree.txt'):
+            os.system(r"touch {}".format('Tree.txt'))
+        else:
+            os.remove('Tree.txt')
+        file = open('Tree.txt','w+')
         # Node.PT(x,0,file)
         # file.close()
-        print("+--" + x.type)
-        Node.dfs_showdir(x.children, 1)
+        Node.dfs_showdir(x.children, 0,file)
         # Node.star(x)
         # print(x.leaf)
         if(error_num==0):
