@@ -375,6 +375,13 @@ import ply.yacc as yacc
 def get_Grammar():
     yacc.yacc()
 
+def Treedisplay(x):
+    if not os.path.exists('Tree.txt'):
+        os.system(r"touch {}".format('Tree.txt'))
+    else:
+        os.remove('Tree.txt')
+    file = open('Tree.txt', 'w+')
+    Node.dfs_showdir(x.children, 0, file)
 # =============================================================================
 # 测试部分：真正运行时将其注释掉 / 将ISTEST设为False
 # =============================================================================
@@ -388,14 +395,9 @@ if ISTEST:
         x = yacc.parse(contents)
         # Node.star(x)
         Node.resolve(x)
-        if not os.path.exists('Tree.txt'):
-            os.system(r"touch {}".format('Tree.txt'))
-        else:
-            os.remove('Tree.txt')
-        file = open('Tree.txt','w+')
+        Treedisplay(x)
         # Node.PT(x,0,file)
         # file.close()
-        Node.dfs_showdir(x.children, 0,file)
         # Node.star(x)
         # print(x.leaf)
         if(error_num==0):
