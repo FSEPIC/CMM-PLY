@@ -22,7 +22,7 @@
 #   4.输入产生式列表
 # =============================================================================
 from grammar.TREEAAA.c_SemanticsAnalysis import Node
-
+import os
 error_num = 0 #用于记录错误次数
 
 # =============================================================================
@@ -383,11 +383,21 @@ ISTEST = True # 打开测试
 if ISTEST:
     try:
         get_Grammar()
-        with open('6.c')as f:
+        with open('4.c')as f:
             contents = f.read()
         x = yacc.parse(contents)
         # Node.star(x)
         Node.resolve(x)
+        if not os.path.exists('Tree.txt'):
+            os.system(r"touch {}".format('Tree.txt'))
+        else:
+            os.remove('Tree.txt')
+        file = open('Tree.txt','w+')
+        # Node.PT(x,0,file)
+        # file.close()
+        Node.dfs_showdir(x.children, 0,file)
+        # Node.star(x)
+        # print(x.leaf)
         if(error_num==0):
             print("grammar is true")
     except EOFError:
