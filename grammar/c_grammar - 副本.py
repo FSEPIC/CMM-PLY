@@ -1,8 +1,3 @@
-# =============================================================================
-# 文件名：c_grammar.py
-# 功能：基于python-lex和python-yacc的C-语法分析器
-# 作者： 武起龙，张峥
-# 时间：2019/12/29
 #==============================================================================
 # *接口说明*
 #   - getGrammar() : 生成parsetab.py和parse.out文件
@@ -191,7 +186,7 @@ def p_read_stmt_1(p):
             a.value = input()
             return
     print("ERROR!The current variable is not declared! \nIn line : %d" % p.lexer.lineno, "\nVariable name : %s" % p[1])
-    sys.exit()
+    exit()
 
 def p_compound_stmt_1(p):
     '''compound_stmt : '{' local_declarations statement_list '}' '''
@@ -366,7 +361,7 @@ def p_factor_2(p):
             p[0] = int(a.value)
             return
     print("ERROR!The current variable is not declared! \nIn line : %d"%p.lexer.lineno,"\nVariable name : %s"%p[1])
-    sys.exit()
+    exit()
 # def p_factor_3(p):
 #     '''factor : call'''
 def p_factor_3(p):

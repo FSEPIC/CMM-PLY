@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1262</width>
+    <width>1439</width>
     <height>795</height>
    </rect>
   </property>
@@ -92,7 +92,7 @@ border-image:url(:/reses/res/parse.png);
   <widget class="QPushButton" name="exitButton">
    <property name="geometry">
     <rect>
-     <x>630</x>
+     <x>688</x>
      <y>15</y>
      <width>35</width>
      <height>31</height>
@@ -128,8 +128,8 @@ border-image:url(:/reses/res/exit.png);
     <rect>
      <x>876</x>
      <y>60</y>
-     <width>371</width>
-     <height>720</height>
+     <width>551</width>
+     <height>721</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -167,7 +167,28 @@ border-image:url(:/reses/res/exit.png);
     </sizepolicy>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QPushButton" name="runButton">
+   <property name="geometry">
+    <rect>
+     <x>635</x>
+     <y>15</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-image:url(:/reses/res/start.png);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>876</x>
@@ -181,38 +202,12 @@ border-image:url(:/reses/res/exit.png);
      <family>Adobe Arabic</family>
      <pointsize>-1</pointsize>
      <weight>75</weight>
+     <italic>false</italic>
      <bold>true</bold>
     </font>
    </property>
    <property name="text">
-    <string>语  法  树</string>
-   </property>
-   <property name="echoMode">
-    <enum>QLineEdit::Normal</enum>
-   </property>
-   <property name="cursorPosition">
-    <number>7</number>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="runButton">
-   <property name="geometry">
-    <rect>
-     <x>690</x>
-     <y>15</y>
-     <width>31</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-border-image:url(:/reses/res/start.png);
-}</string>
-   </property>
-   <property name="text">
-    <string/>
+    <string>语 法 树</string>
    </property>
   </widget>
  </widget>
@@ -300,6 +295,22 @@ border-image:url(:/reses/res/start.png);
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CMM_Parse</receiver>
+   <slot>treeButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>984</x>
+     <y>36</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1090</x>
+     <y>16</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>openButtonClicked()</slot>
@@ -307,5 +318,6 @@ border-image:url(:/reses/res/start.png);
   <slot>parseButtonClicked()</slot>
   <slot>exitClicked()</slot>
   <slot>runClicked()</slot>
+  <slot>treeButtonClicked()</slot>
  </slots>
 </ui>
