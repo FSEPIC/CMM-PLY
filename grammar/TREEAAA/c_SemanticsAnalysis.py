@@ -1,7 +1,7 @@
-#字母表
+import os
 import sys
 
-
+#字母表
 class IDLIST:
     def __init__(self,t,n,v):
         self.type=t;
@@ -12,12 +12,13 @@ class IDLIST:
 
 MyIdList = []
 data = []
-
+idline = 0
 #树解析
 class Node:
-    def __init__(self, type, children=None,ac=''):
+    def __init__(self, type, children=None,ac='',lines = 0):
         self.action = ac
         self.type = type
+        self.lines = lines
         if children:
             self.children = children
         else:
@@ -27,7 +28,7 @@ class Node:
 
     def execute(self):
         action_dict = {
-            'write': self._print,
+            'write': self._write,
             'read' : self._read,
             'assign': self._assign,
             'gettype': self._gettype,
@@ -50,13 +51,15 @@ class Node:
     def __str__(self):
         return '%s \n' % (self.type)
 
+
+
     def _inside(self):
         for x in self.children:
             a = Node.resolve(x)
         return a
 
     @staticmethod
-    def dfs_showdir(tree, depth,file):
+    def dfs_showtree(tree, depth,file):
         if depth == 0:
             file.write("+--father\n")
         for item in tree:
@@ -70,7 +73,7 @@ class Node:
             file.write(a)
             bitem = item.children
             if not (len(bitem) == 1 and type(bitem[0]) is not Node):
-                Node.dfs_showdir(bitem, depth + 1,file)
+                Node.dfs_showtree(bitem, depth + 1,file)
     @staticmethod
     def star(self):
         if self == None:
@@ -118,21 +121,38 @@ class Node:
             return x
         else:
             return x.execute()
+
+    @staticmethod
+    def readidfrom():
+        file = open('idvalue','r+')
+        t = 1
+        while(t):
+            if idline == (t-1):
+                return file.__next__()
+            file.__next__()
+            t = t + 1
+
     def _read(self):
+        global idline
         for id in MyIdList:
             if  id.name == self.children[2]:
                 if type(id.data) == list:
-                    id.data[0] = input()
+                    id.data[0] = Node.readidfrom()
+                    idline = idline + 1
                     return
-                id.value = input()
+                id.value = Node.readidfrom()
+                idline = idline + 1
                 return
         self._error()
-        sys.exit()
+        exit()
 
-    def _print(self):
+    def _write(self):
         num = Node.resolve(self.children[2])
         if type(num) == str:
             num = self.getvalue(num)
+        file = open('result','a+')
+        file.write(str(num) + "\n")
+        file.close()
         print(num)
 
     def clean(self):
@@ -187,6 +207,12 @@ class Node:
                     if id.type == 'real':
                         num = float(id.value)
                 return num
+        file = open('result','a+')
+        s = "取值出错，无此变量:   %s   " % name + "|   出错行数为:'%d'" % self.lines + "\n"
+        file.write(s)
+        print("取值出错，无此变量:   %s   " % name, "|   出错行数为:'%d'" % self.lines)
+        exit()
+
     def _binop(self):
         na = Node.resolve(self.children[0])
         nb = Node.resolve(self.children[2])
@@ -220,6 +246,11 @@ class Node:
         for id in MyIdList:
             if id.name == self.children[0]:
                 return id.data[num]
+        file = open('result','a+')
+        s = "取值出错，无此变量:   %s   " % self.children[0] +  "|   出错行数为:'%d'" % self.lines + "\n"
+        file.write(s)
+        print("取值出错，无此变量:   %s   " % self.children[0], "|   出错行数为:'%d'" % self.lines)
+        exit()
 
     def _gettype(self):
         return self.children[0]
@@ -229,6 +260,13 @@ class Node:
                 if type(id.data) == list:
                     return id.name
                 return id.name
+        file = open('result','a+')
+        s = "取值出错，无此变量:   %s   " % self.children[0] +  "|   出错行数为:'%d'" % self.lines + "\n"
+        file.write(s)
+        file.close()
+        print("取值出错，无此变量:   %s   " % self.children[0], "|   出错行数为:'%d'" % self.lines)
+        exit()
+
     def _getnum(self):
         return self.children[0]
     def _getop(self):
