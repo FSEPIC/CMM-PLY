@@ -59,6 +59,7 @@ class Node:
         return a
 
     @staticmethod
+<<<<<<< HEAD
     def GCollec():
         global idline
         global data
@@ -68,6 +69,8 @@ class Node:
         MyIdList = []
 
     @staticmethod
+=======
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
     def dfs_showtree(tree, depth,file):
         if depth == 0:
             file.write("+father\n")
@@ -133,7 +136,11 @@ class Node:
 
     @staticmethod
     def readidfrom():
+<<<<<<< HEAD
         file = open('../grammar/idvalue','r+')
+=======
+        file = open('idvalue','r+')
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
         t = 1
         while(t):
             if idline == (t-1):
@@ -153,7 +160,11 @@ class Node:
                 idline = idline + 1
                 return
         self._error()
+<<<<<<< HEAD
         # exit()
+=======
+        exit()
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
     def _write(self):
         num = Node.resolve(self.children[2])
@@ -220,7 +231,11 @@ class Node:
         s = "取值出错，无此变量:   %s   " % name + "|   出错行数为:'%d'" % self.lines + "\n"
         file.write(s)
         print("取值出错，无此变量:   %s   " % name, "|   出错行数为:'%d'" % self.lines)
+<<<<<<< HEAD
         # exit()
+=======
+        exit()
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
     def _binop(self):
         na = Node.resolve(self.children[0])
@@ -259,7 +274,11 @@ class Node:
         s = "取值出错，无此变量:   %s   " % self.children[0] +  "|   出错行数为:'%d'" % self.lines + "\n"
         file.write(s)
         print("取值出错，无此变量:   %s   " % self.children[0], "|   出错行数为:'%d'" % self.lines)
+<<<<<<< HEAD
         # exit()
+=======
+        exit()
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
     def _gettype(self):
         return self.children[0]
@@ -274,7 +293,11 @@ class Node:
         file.write(s)
         file.close()
         print("取值出错，无此变量:   %s   " % self.children[0], "|   出错行数为:'%d'" % self.lines)
+<<<<<<< HEAD
         # exit()
+=======
+        exit()
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
     def _getnum(self):
         return self.children[0]

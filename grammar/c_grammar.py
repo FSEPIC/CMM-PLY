@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ==============================================================================
 # *接口说明*
 #   - getGrammar() : 生成parsetab.py和parse.out文件
@@ -9,6 +10,8 @@
 # *有用参考*
 #   - 英文文档：http://www.dabeaz.com/ply/ply.html （强烈推荐）
 #   - 中文文档：https://www.cnblogs.com/P_Chou/p/python-lex-yacc.html
+=======
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 # =============================================================================
 # *实现思路*
 #   1.输入标识符和界符等符号
@@ -99,6 +102,7 @@ import ply.lex as lex  # 导入python lex模块
 # ==============================================================================
 def p_program_1(p):
     '''program : statement_list'''
+<<<<<<< HEAD
     p[0] = Node('father', [p[1]], '', p.lexer.lineno)
 
 
@@ -106,6 +110,13 @@ def p_statement_list_1(p):
     '''statement_list : statement_list statement'''
     p[0] = Node('stmt_list', [p[1], p[2]], '', p.lexer.lineno)
 
+=======
+    p[0] = Node('father', [p[1]],'',p.lexer.lineno)
+
+def p_statement_list_1(p):
+    '''statement_list : statement_list statement'''
+    p[0] = Node('stmt_list', [p[1],p[2]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 def p_statement_list_empty(p):
     '''statement_list : '''
@@ -113,57 +124,101 @@ def p_statement_list_empty(p):
 
 def p_statement_1(p):
     '''statement : expression_stmt'''
+<<<<<<< HEAD
     p[0] = Node('stmt', [p[1]], '', p.lexer.lineno)
+=======
+    p[0] = Node('stmt', [p[1]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_statement_2(p):
     '''statement : compound_stmt'''
+<<<<<<< HEAD
     p[0] = Node('stmt', [p[1]], '', p.lexer.lineno)
+=======
+    p[0] = Node('stmt', [p[1]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_statement_3(p):
     '''statement : selection_stmt'''
+<<<<<<< HEAD
     p[0] = Node('stmt', [p[1]], '', p.lexer.lineno)
+=======
+    p[0] = Node('stmt', [p[1]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_statement_4(p):
     '''statement : iteration_stmt'''
+<<<<<<< HEAD
     p[0] = Node('stmt', [p[1]], '', p.lexer.lineno)
+=======
+    p[0] = Node('stmt', [p[1]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_statement_5(p):
     '''statement : var_declaration'''
+<<<<<<< HEAD
     p[0] = Node('stmt', [p[1]], '', p.lexer.lineno)
+=======
+    p[0] = Node('stmt', [p[1]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_statement_6(p):
     '''statement : write_stmt'''
+<<<<<<< HEAD
     p[0] = Node('stmt', [p[1]], '', p.lexer.lineno)
+=======
+    p[0] = Node('stmt', [p[1]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_statement_7(p):
     '''statement : read_stmt'''
+<<<<<<< HEAD
     p[0] = Node('stmt', [p[1]], '', p.lexer.lineno)
+=======
+    p[0] = Node('stmt', [p[1]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_write_stmt_1(p):
     '''write_stmt : WRITE '(' expression ')' '''
+<<<<<<< HEAD
     p[0] = Node('write', [p[1], p[2], p[3], p[4]], '', p.lexer.lineno)
+=======
+    p[0] = Node('write', [p[1],p[2],p[3],p[4]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_read_stmt_1(p):
     '''read_stmt : READ '(' ID ')' '''
+<<<<<<< HEAD
     p[0] = Node('read', [p[1], p[2], p[3], p[4]], '', p.lexer.lineno)
+=======
+    p[0] = Node('read', [p[1],p[2],p[3],p[4]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_compound_stmt_1(p):
     '''compound_stmt : '{' local_declarations statement_list '}' '''
+<<<<<<< HEAD
     p[0] = Node('compound', [p[1], p[2], p[3], p[4]], '', p.lexer.lineno)
+=======
+    p[0] = Node('compound', [p[1],p[2],p[3],p[4]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_local_declarations_1(p):
     '''local_declarations : local_declarations var_declaration'''
+<<<<<<< HEAD
     p[0] = Node('local', [p[1], p[2]], '', p.lexer.lineno)
+=======
+    p[0] = Node('local', [p[1],p[2]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_local_declarations_empty(p):
@@ -172,61 +227,106 @@ def p_local_declarations_empty(p):
 
 def p_var_declaration_1(p):
     '''var_declaration : type_specifier ID ';' '''
+<<<<<<< HEAD
     p[0] = Node('var_declaration', [p[1], p[2], p[3]], 'assign', p.lexer.lineno)
+=======
+    p[0] = Node('var_declaration', [p[1],p[2],p[3]],'assign',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_var_declaration_2(p):
     '''var_declaration : type_specifier ID '[' NUM ']' ';' '''
+<<<<<<< HEAD
     p[0] = Node('var_declaration', [p[1], p[2], p[3], p[4], p[5], p[6]], 'assign', p.lexer.lineno)
+=======
+    p[0] = Node('var_declaration', [p[1],p[2],p[3],p[4],p[5],p[6]],'assign',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_var_declaration_3(p):
     '''var_declaration : type_specifier ID '=' expression ';' '''
+<<<<<<< HEAD
     p[0] = Node('var_declaration', [p[1], p[2], p[3], p[4], p[5]], 'assign', p.lexer.lineno)
+=======
+    p[0] = Node('var_declaration', [p[1],p[2],p[3],p[4],p[5]],'assign',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_type_specifier_1(p):
     '''type_specifier : INT'''
+<<<<<<< HEAD
     p[0] = Node('type', [p[1]], 'gettype', p.lexer.lineno)
+=======
+    p[0] = Node('type',[p[1]],'gettype',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_type_specifier_2(p):
     '''type_specifier : REAL'''
+<<<<<<< HEAD
     p[0] = Node('type', [p[1]], 'gettype', p.lexer.lineno)
+=======
+    p[0] = Node('type', [p[1]],'gettype',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_expression_stmt_1(p):
     '''expression_stmt : expression ';' '''
+<<<<<<< HEAD
     p[0] = Node('expr_stmt', [p[1], p[2]], '', p.lexer.lineno)
+=======
+    p[0] = Node('expr_stmt', [p[1],p[2]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_expression_stmt_2(p):
     '''expression_stmt : ';' '''
+<<<<<<< HEAD
     p[0] = Node('expr_stmt', [p[1]], '', p.lexer.lineno)
+=======
+    p[0] = Node('expr_stmt', [p[1]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_selection_stmt_1(p):
     '''selection_stmt : IF '(' expression ')' statement'''
+<<<<<<< HEAD
     p[0] = Node('selection_stmt', [p[1], p[2], p[3], p[4], p[5]], 'conditionsp', p.lexer.lineno)
+=======
+    p[0] = Node('selection_stmt', [p[1],p[2],p[3],p[4],p[5]],'conditionsp',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_selection_stmt_2(p):
     '''selection_stmt : IF '(' expression ')' statement ELSE statement'''
+<<<<<<< HEAD
     p[0] = Node('selection_stmt', [p[1], p[2], p[3], p[4], p[5], p[6], p[7]], 'condition', p.lexer.lineno)
+=======
+    p[0] = Node('selection_stmt', [p[1],p[2],p[3],p[4],p[5],p[6],p[7]],'condition',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_iteration_stmt_1(p):
     '''iteration_stmt : WHILE '(' expression ')' statement'''
+<<<<<<< HEAD
     p[0] = Node('iteration_stmt', [p[1], p[2], p[3], p[4], p[5]], 'loop', p.lexer.lineno)
+=======
+    p[0] = Node('iteration_stmt', [p[1],p[2],p[3],p[4],p[5]],'loop',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_expression_1(p):
     '''expression : var '=' expression'''
+<<<<<<< HEAD
     p[0] = Node('exp', [p[1], p[2], p[3]], 'as', p.lexer.lineno)
+=======
+    p[0] = Node('exp', [p[1],p[2],p[3]],'as',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_expression_2(p):
     '''expression : simple_expression'''
+<<<<<<< HEAD
     p[0] = Node('expr', [p[1]], '', p.lexer.lineno)
 
 
@@ -238,6 +338,17 @@ def p_expression_3(p):
 def p_array_1(p):
     '''array : array_list'''
     p[0] = Node('array', [p[1]], 'arrayto', p.lexer.lineno)
+=======
+    p[0] = Node('expr', [p[1]],'',p.lexer.lineno)
+
+def p_expression_3(p):
+    '''expression : '[' array ']' '''
+    p[0] = Node('expr', [p[1],p[2],p[3]],'',p.lexer.lineno)
+
+def p_array_1(p):
+    '''array : array_list'''
+    p[0] = Node('array', [p[1]],'arrayto',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_array_empty(p):
@@ -246,122 +357,218 @@ def p_array_empty(p):
 
 def p_array_list_1(p):
     ''' array_list : array_list ',' array_list'''
+<<<<<<< HEAD
     p[0] = Node('arr_list', [p[1], p[2], p[3]], '', p.lexer.lineno)
+=======
+    p[0] = Node('arr_list', [p[1],p[2],p[3]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_arg_list_2(p):
     ''' array_list : factor'''
+<<<<<<< HEAD
     p[0] = Node('arr_list', [p[1]], 'array', p.lexer.lineno)
+=======
+    p[0] = Node('arr_list', [p[1]],'array',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_var_1(p):
     ''' var : ID'''
+<<<<<<< HEAD
     p[0] = Node('var', [p[1]], 'getid', p.lexer.lineno)
+=======
+    p[0] = Node('var', [p[1]],'getid',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_var_2(p):
     ''' var : ID '[' expression ']' '''
+<<<<<<< HEAD
     p[0] = Node('var', [p[1], p[2], p[3], p[4]], 'getarraynum', p.lexer.lineno)
+=======
+    p[0] = Node('var', [p[1],p[2],p[3],p[4]],'getarraynum',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_simple_expression_1(p):
     '''simple_expression : additive_expression relop additive_expression'''
+<<<<<<< HEAD
     p[0] = Node('simple_expression', [p[1], p[2], p[3]], 'binop', p.lexer.lineno)
+=======
+    p[0] = Node('simple_expression', [p[1],p[2],p[3]],'binop',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_simple_expression_2(p):
     '''simple_expression : additive_expression'''
+<<<<<<< HEAD
     p[0] = Node('simple_expr', [p[1]], '', p.lexer.lineno)
+=======
+    p[0] = Node('simple_expr', [p[1]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_relop_1(p):
     '''relop : LE'''
+<<<<<<< HEAD
     p[0] = Node('relop', [p[1]], 'getop', p.lexer.lineno)
+=======
+    p[0] = Node('relop', [p[1]],'getop',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_relop_2(p):
     '''relop : '<' '''
+<<<<<<< HEAD
     p[0] = Node('relop', [p[1]], 'getop', p.lexer.lineno)
+=======
+    p[0] = Node('relop', [p[1]],'getop',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_relop_3(p):
     '''relop : '>' '''
+<<<<<<< HEAD
     p[0] = Node('relop', [p[1]], 'getop', p.lexer.lineno)
+=======
+    p[0] = Node('relop', [p[1]],'getop',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_relop_4(p):
     '''relop : GE'''
+<<<<<<< HEAD
     p[0] = Node('relop', [p[1]], 'getop', p.lexer.lineno)
+=======
+    p[0] = Node('relop', [p[1]],'getop',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_relop_5(p):
     '''relop : EE'''
+<<<<<<< HEAD
     p[0] = Node('relop', [p[1]], 'getop', p.lexer.lineno)
+=======
+    p[0] = Node('relop', [p[1]],'getop',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_relop_6(p):
     '''relop : NE'''
+<<<<<<< HEAD
     p[0] = Node('relop', [p[1]], 'getop', p.lexer.lineno)
+=======
+    p[0] = Node('relop', [p[1]],'getop',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_additive_expression_1(p):
     '''additive_expression : additive_expression addop term'''
+<<<<<<< HEAD
     p[0] = Node('additive_expression', [p[1], p[2], p[3]], 'binop', p.lexer.lineno)
+=======
+    p[0] = Node('additive_expression', [p[1],p[2],p[3]],'binop',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_additive_expression_2(p):
     '''additive_expression : term'''
+<<<<<<< HEAD
     p[0] = Node('addi_expr', [p[1]], '', p.lexer.lineno)
+=======
+    p[0] = Node('addi_expr', [p[1]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_addop_1(p):
     '''addop : '+' '''
+<<<<<<< HEAD
     p[0] = Node('addop', [p[1]], 'getop', p.lexer.lineno)
+=======
+    p[0] = Node('addop', [p[1]],'getop',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_addop_2(p):
     '''addop : '-' '''
+<<<<<<< HEAD
     p[0] = Node('addop', [p[1]], 'getop', p.lexer.lineno)
+=======
+    p[0] = Node('addop', [p[1]],'getop',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_term_1(p):
     '''term : term mulop factor'''
+<<<<<<< HEAD
     p[0] = Node('term', [p[1], p[2], p[3]], 'binop', p.lexer.lineno)
+=======
+    p[0] = Node('term', [p[1],p[2],p[3]],'binop',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_term_2(p):
     '''term : factor'''
+<<<<<<< HEAD
     p[0] = Node('term', [p[1]], '', p.lexer.lineno)
+=======
+    p[0] = Node('term', [p[1]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_mulop_1(p):
     ''' mulop : '*' '''
+<<<<<<< HEAD
     p[0] = Node('mulop', [p[1]], '', p.lexer.lineno)
+=======
+    p[0] = Node('mulop', [p[1]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_mulop_2(p):
     ''' mulop : '/' '''
+<<<<<<< HEAD
     p[0] = Node('mulop', [p[1]], '', p.lexer.lineno)
+=======
+    p[0] = Node('mulop', [p[1]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_factor_1(p):
     '''factor : '(' expression ')' '''
+<<<<<<< HEAD
     p[0] = Node('factor', [p[1], p[2], p[3]], '', p.lexer.lineno)
+=======
+    p[0] = Node('factor', [p[1],p[2],p[3]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_factor_2(p):
     '''factor : var'''
+<<<<<<< HEAD
     p[0] = Node('factor', [p[1]], '', p.lexer.lineno)
+=======
+    p[0] = Node('factor', [p[1]],'',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_factor_3(p):
     '''factor : NUM'''
+<<<<<<< HEAD
     p[0] = Node('factor', [int(p[1])], 'getnum', p.lexer.lineno)
+=======
+    p[0] = Node('factor', [int(p[1])],'getnum',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 def p_factor_4(p):
     '''factor : NUMF'''
+<<<<<<< HEAD
     p[0] = Node('factor', [float(p[1])], 'getnum', p.lexer.lineno)
+=======
+    p[0] = Node('factor', [float(p[1])],'getnum',p.lexer.lineno)
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 
 
 # 错误处理，输出错误所在单词
@@ -392,8 +599,11 @@ def Treedisplay(x):
         os.remove('Tree.txt')
     file = open('Tree.txt', 'w+')
     Node.dfs_showtree(x.children, 0, file)
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
 # =============================================================================
 # 测试部分：真正运行时将其注释掉 / 将ISTEST设为False
 # =============================================================================
@@ -402,11 +612,17 @@ def RDisplay():
         os.system(r"touch {}".format('result'))
     else:
         os.remove('result')
+<<<<<<< HEAD
 
 
 def compile(s):
     try:
         a = get_Grammar()
+=======
+def compile(s):
+    try:
+        get_Grammar()
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
         with open(s)as f:
             contents = f.read()
         x = yacc.parse(contents)
@@ -423,4 +639,9 @@ def compile(s):
     except EOFError:
         print("Can't open file")
 
+<<<<<<< HEAD
 # compile('2.c')
+=======
+
+compile('2.c')
+>>>>>>> b8da93728cc716a6ccdb1ba2ad0926c441a73983
