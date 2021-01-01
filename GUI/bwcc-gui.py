@@ -89,8 +89,7 @@ class BWCC(GUI.bwcc.Ui_CMM_Parse, QMainWindow):
         self.editor.setLexer(self.lexer)
         self.mod = False
         self.__api = QsciAPIs(self.lexer)
-        kwlist = ["real", "void", "int", 'printf', "main",
-                  "for", "read", "while", "write", "if", "else", ";"]
+        kwlist = ["int","real", "void" , 'printf', "main","for", "read", "while", "write", "if", "else", ";"]
 
         autocompletions = keyword.kwlist + kwlist
         for ac in autocompletions:
